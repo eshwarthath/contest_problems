@@ -1,0 +1,38 @@
+
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int T;
+    cin >> T;
+
+    while (T--) {
+        int N, M;
+        cin >> N >> M;
+
+        int minRow = N, maxRow = -1;
+        int minCol = M, maxCol = -1;
+
+        for (int i = 0; i < N; i++) {
+            string s;
+            cin >> s;
+
+            for (int j = 0; j < M; j++) {
+                if (s[j] == '1') {
+                    minRow = min(minRow, i);
+                    maxRow = max(maxRow, i);
+
+                    minCol = min(minCol, j);
+                    maxCol = max(maxCol, j);
+                }
+            }
+        }
+
+        int height = maxRow - minRow + 1;
+        int width = maxCol - minCol + 1;
+
+        cout << height * width << '\n';
+    }
+
+    return 0;
+}
